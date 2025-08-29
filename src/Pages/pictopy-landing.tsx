@@ -24,7 +24,12 @@ const PictopyLogo = () => {
 
 const PictopyLanding: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    // Default to bright mode (light) on first load
+    const saved = localStorage.getItem('darkMode');
+    if (saved !== null) return saved === 'true';
+    return false;
+  });
 
   // Read dark mode from the HTML element (set by navbar)
   useEffect(() => {
@@ -69,7 +74,7 @@ const PictopyLanding: FC = () => {
 
   return (
     <div className={darkMode ? 'dark' : ''}>
-      <section className="relative w-full py-16 md:py-32 bg-gradient-to-br from-slate-50 via-white to-green-50 dark:from-gray-900 dark:via-black dark:to-green-950 transition-all duration-500 overflow-hidden">
+      <section className="relative w-full py-16 md:py-32 min-h-screen bg-white dark:bg-black transition-all duration-300 overflow-hidden">
 
         {/* Enhanced Background Elements */}
         <div className="absolute inset-0 z-0">
