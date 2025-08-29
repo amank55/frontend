@@ -24,15 +24,39 @@ const PictopyLogo = () => {
 
 const PictopyLanding: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const darkMode = false; // Set to true to enable dark mode, or replace with your dark mode logic
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
+  // Read dark mode from the HTML element (set by navbar)
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      setDarkMode(isDark);
+    };
+
+    // Initial check
+    checkDarkMode();
+
+    // Watch for changes to the dark class
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          checkDarkMode();
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Animate on mount
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-
 
   // Scroll to main Download button in Home1.tsx
   const scrollToMainDownload = () => {
@@ -196,8 +220,6 @@ const PictopyLanding: FC = () => {
             </p>
           </div>
         </div>
-
-  {/* Enhanced Download Notification removed as requested */}
 
         <style>{`
           @keyframes float {
