@@ -74,7 +74,7 @@ const PictopyLanding: FC = () => {
 
   return (
     <div className={darkMode ? 'dark' : ''}>
-      <section className="relative w-full py-16 md:py-32 min-h-screen bg-white dark:bg-black transition-all duration-300 overflow-hidden">
+  <section className="relative w-full py-16 md:py-32 min-h-screen bg-white dark:bg-black transition-all duration-300 overflow-hidden">
 
         {/* Enhanced Background Elements */}
         <div className="absolute inset-0 z-0">
@@ -134,10 +134,10 @@ const PictopyLanding: FC = () => {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className={`flex flex-col items-center text-center transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          } bg-white dark:bg-black`}>
             
             {/* Enhanced Logo and Title */}
-            <div className="flex items-center justify-center gap-6 mb-8 group">
+            <div className="flex items-center justify-center gap-6 mb-8 group bg-white dark:bg-black rounded-2xl p-4">
               <div className="relative">
                 <div className="absolute -inset-2 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-75 group-hover:opacity-100 blur-sm transition-opacity duration-300"></div>
                 <div className="relative">
@@ -151,7 +151,7 @@ const PictopyLanding: FC = () => {
 
             {/* Enhanced Subtitle */}
             <div className="mb-4">
-              <p className="text-xl md:text-3xl lg:text-4xl font-medium text-gray-700 dark:text-gray-200 max-w-4xl mb-6 leading-relaxed">
+              <p className="text-xl md:text-3xl lg:text-4xl font-medium text-gray-700 dark:text-gray-200 max-w-4xl mb-6 leading-relaxed bg-white dark:bg-black">
                 Organize your photos effortlessly with{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 font-bold">
                   AI-powered smart categorization
@@ -160,10 +160,10 @@ const PictopyLanding: FC = () => {
             </div>
 
             {/* Enhanced Download Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8 bg-white dark:bg-black rounded-xl p-4">
               {/* Mac Button */}
               <Button
-                className="group relative bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white h-14 px-8 transition-all duration-300 border-2 border-transparent hover:border-gray-700 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-gray-500/25 rounded-xl font-semibold text-lg overflow-hidden"
+                className="group relative bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white dark:text-white h-14 px-8 transition-all duration-300 border-2 border-transparent hover:border-gray-700 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-gray-500/25 rounded-xl font-semibold text-lg overflow-hidden dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900"
                 size="lg"
                 onClick={scrollToMainDownload}
               >
@@ -176,7 +176,7 @@ const PictopyLanding: FC = () => {
                 <span className="relative z-10 ml-3">Download for Mac</span>
               </Button>
               <Button
-                className="group relative bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700 text-white h-14 px-8 transition-all duration-300 border-2 border-blue-400 hover:border-blue-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/25 rounded-xl font-semibold text-lg overflow-hidden scale-105"
+                className="group relative bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white dark:text-white h-14 px-8 transition-all duration-300 border-2 border-blue-400 hover:border-blue-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/25 rounded-xl font-semibold text-lg overflow-hidden scale-105 dark:bg-gradient-to-r dark:from-blue-500 dark:to-blue-600"
                 size="lg"
                 onClick={scrollToMainDownload}
               >
@@ -194,7 +194,7 @@ const PictopyLanding: FC = () => {
 
               {/* Linux Button */}
               <Button
-                className="group relative bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 dark:from-yellow-400 dark:to-yellow-500 dark:hover:from-yellow-500 dark:hover:to-yellow-600 text-white h-14 px-8 transition-all duration-300 border-2 border-transparent hover:border-yellow-400 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/25 rounded-xl font-semibold text-lg overflow-hidden"
+                className="group relative bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white dark:text-white h-14 px-8 transition-all duration-300 border-2 border-transparent hover:border-yellow-400 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/25 rounded-xl font-semibold text-lg overflow-hidden dark:bg-gradient-to-r dark:from-yellow-500 dark:to-yellow-600"
                 size="lg"
                 onClick={scrollToMainDownload}
               >
@@ -220,7 +220,7 @@ const PictopyLanding: FC = () => {
             </div>
 
             {/* Additional Info - Simplified */}
-            <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 max-w-2xl">
+            <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 max-w-2xl bg-white dark:bg-black">
               No subscription required.
             </p>
           </div>
