@@ -64,37 +64,66 @@ const Navbar: React.FC = () => {
 
   // Load dark mode setting from localStorage or fallback to system preference
   useEffect(() => {
-    const savedDarkMode = localStorage.getItem("darkMode");
-    if (savedDarkMode !== null) {
-      setDarkMode(savedDarkMode === "true");
-      if (savedDarkMode === "true") {
-        document.documentElement.classList.add("dark");
+    try {
+      const savedDarkMode = localStorage.getItem("darkMode");
+      if (savedDarkMode !== null) {
+        const isDark = savedDarkMode === "true";
+        setDarkMode(isDark);
+        applyDarkMode(isDark);
       } else {
-        document.documentElement.classList.remove("dark");
+        const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setDarkMode(prefersDarkMode);
+        applyDarkMode(prefersDarkMode);
       }
-    } else {
-      const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setDarkMode(prefersDarkMode);
-      if (prefersDarkMode) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+    } catch (error) {
+      console.warn("Error loading dark mode:", error);
+      setDarkMode(false);
+      applyDarkMode(false);
     }
   }, []);
 
-  // Apply dark mode class to <html> and set background color for both modes
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      document.body.style.backgroundColor = "#111";
-      localStorage.setItem("darkMode", "true");
+  // Function to apply dark mode changes with mobile support
+  const applyDarkMode = (isDark: boolean) => {
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (isDark) {
+      html.classList.add("dark");
+      html.style.colorScheme = "dark"; // Helps mobile browsers
+      body.style.backgroundColor = "#111";
+      try {
+        localStorage.setItem("darkMode", "true");
+      } catch (e) {
+        console.warn("Cannot save to localStorage:", e);
+      }
     } else {
-      document.documentElement.classList.remove("dark");
-      document.body.style.backgroundColor = "#fff";
-      localStorage.setItem("darkMode", "false");
+      html.classList.remove("dark");
+      html.style.colorScheme = "light"; // Helps mobile browsers  
+      body.style.backgroundColor = "#fff";
+      try {
+        localStorage.setItem("darkMode", "false");
+      } catch (e) {
+        console.warn("Cannot save to localStorage:", e);
+      }
     }
-  }, [darkMode]);
+
+    // Force repaint on mobile devices
+    if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      requestAnimationFrame(() => {
+        html.style.transform = 'translateZ(0)';
+        setTimeout(() => {
+          html.style.transform = '';
+        }, 50);
+      });
+    }
+  };
+
+  // Handle dark mode toggle
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    applyDarkMode(newDarkMode);
+  };
 
   // Handle scroll to adjust navbar styles
   useEffect(() => {
@@ -159,7 +188,7 @@ const Navbar: React.FC = () => {
 
               {/* Dark Mode Toggle Button */}
               <button
-                onClick={() => setDarkMode(!darkMode)}
+                onClick={toggleDarkMode}
                 className="text-gray-800 dark:text-gray-300 
                 hover:text-black dark:hover:text-white 
                 transition-colors duration-300"
@@ -172,9 +201,12 @@ const Navbar: React.FC = () => {
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center space-x-4">
               <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 z-[100] fixed top-6 right-16 bg-white dark:bg-black p-2 rounded-full shadow-lg"
-                style={{ zIndex: 100 }}
+                onClick={toggleDarkMode}
+                className="text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 z-[100] fixed top-6 right-16 bg-white dark:bg-black p-2 rounded-full shadow-lg touch-manipulation"
+                style={{ 
+                  zIndex: 100,
+                  WebkitTapHighlightColor: 'transparent'
+                }}
               >
                 <span className="sr-only">Toggle dark mode</span>
                 {darkMode ? <span>🌙</span> : <span>🌞</span>}
