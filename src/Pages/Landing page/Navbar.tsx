@@ -65,22 +65,33 @@ const Navbar: React.FC = () => {
   // Load dark mode setting from localStorage or fallback to system preference
   useEffect(() => {
     const savedDarkMode = localStorage.getItem("darkMode");
-
     if (savedDarkMode !== null) {
       setDarkMode(savedDarkMode === "true");
+      if (savedDarkMode === "true") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     } else {
       const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
       setDarkMode(prefersDarkMode);
+      if (prefersDarkMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     }
   }, []);
 
-  // Apply dark mode class to body when darkMode state changes
+  // Apply dark mode class to <html> and set background color for both modes
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
+      document.body.style.backgroundColor = "#111";
       localStorage.setItem("darkMode", "true");
     } else {
       document.documentElement.classList.remove("dark");
+      document.body.style.backgroundColor = "#fff";
       localStorage.setItem("darkMode", "false");
     }
   }, [darkMode]);
