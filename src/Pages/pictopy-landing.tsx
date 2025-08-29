@@ -268,8 +268,7 @@ const PictopyLanding: FC = () => {
             background-size: 300% 300%;
           }
         `}</style>
-      </section>
-    </div>
+    </section>
   );
 };
 
