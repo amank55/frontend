@@ -162,18 +162,15 @@ const Navbar: React.FC = () => {
             <div className="md:hidden flex items-center space-x-4">
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="text-gray-800 dark:text-gray-300 
-                hover:text-black dark:hover:text-white 
-                transition-colors duration-300"
+                className="text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 z-[100] fixed top-6 right-16 bg-white dark:bg-black p-2 rounded-full shadow-lg"
+                style={{ zIndex: 100 }}
               >
                 <span className="sr-only">Toggle dark mode</span>
                 {darkMode ? <span>🌙</span> : <span>🌞</span>}
               </button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-gray-800 dark:text-gray-300 
-                hover:text-black dark:hover:text-white 
-                transition-colors duration-300"
+                className="text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300"
               >
                 <span className="sr-only">Open menu</span>
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
