@@ -184,7 +184,7 @@ const PictopyLanding: FC = () => {
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-gray-200/50 dark:border-gray-700/50 max-w-4xl">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">Cross-Platform Compatibility</h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                PictoPy is designed for cross-platform compatibility. It's available on macOS and Windows, 
+                PictoPy is designed for cross-platform compatibility. It's available on macOS, Linux and Windows, 
                 allowing you to manage your photo collection seamlessly across all your devices with 
                 synchronization options that respect your privacy preferences. Currently supporting Windows, Mac and Linux (Debian-based).
               </p>
