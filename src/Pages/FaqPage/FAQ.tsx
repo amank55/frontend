@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "What platforms does PictoPy support?",
     answer:
-      "PictoPy is designed for cross-platform compatibility. It's available on Linux,MacOS, and Windows, allowing you to manage your photo collection seamlessly across all your devices with synchronization options that respect your privacy preferences.",
+      "PictoPy is designed for cross-platform compatibility. It's available on Linux,MacOS, and Windows allowing you to manage your photo collection seamlessly across all your devices with synchronization options that respect your privacy preferences.",
     icon: <Globe className="w-5 h-5" />
   }
 ];
