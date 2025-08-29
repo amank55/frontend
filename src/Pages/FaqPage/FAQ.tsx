@@ -1,4 +1,4 @@
-// FAQ.tsx
+
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp, Tag, Lock, Globe } from "lucide-react";
