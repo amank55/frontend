@@ -139,11 +139,11 @@ const PictopyLanding: FC = () => {
                 onClick={scrollToMainDownload}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                 <img 
-                     src="/src/assets/mac.logo.png" 
-                     alt="Mac Logo" 
-                     className="w-7 h-7 relative z-10 rounded-lg object-contain transition-transform duration-300 group-hover:scale-110"
-                  />
+         <img 
+           src="/mac.logo.png" 
+           alt="Mac Logo" 
+           className="w-7 h-7 relative z-10 rounded-lg object-contain transition-transform duration-300 group-hover:scale-110"
+          />
                 <span className="relative z-10 ml-3">Download for Mac</span>
               </Button>
               <Button
@@ -155,11 +155,11 @@ const PictopyLanding: FC = () => {
                   Popular
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                 <img 
-                     src="/src/assets/windows.png" 
-                     alt="Mac Logo" 
-                     className="w-7 h-7 relative z-10 rounded-lg object-contain transition-transform duration-300 group-hover:scale-110"
-                  />
+         <img 
+           src="/windows.png" 
+           alt="Windows Logo" 
+           className="w-7 h-7 relative z-10 rounded-lg object-contain transition-transform duration-300 group-hover:scale-110"
+          />
                 <span className="relative z-10 ml-3">Download for Windows</span>
               </Button>
 
@@ -171,7 +171,7 @@ const PictopyLanding: FC = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                      <img
-                      src="/src/assets/Linux-logo.jpg"
+                      src="/Linux-logo.jpg"
                       alt="Linux Logo"
                       className="w-8 h-8 relative z-10 rounded-full object-contain bg-white p-1 shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg"
                     />
